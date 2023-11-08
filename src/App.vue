@@ -34,25 +34,16 @@ export default {
   },
   methods: {
     async registration() {
-      try {
-        const response = await fetch(`${this.host}/auth/registration`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(this.submitForm),
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const responseData = await response.json();
-        this.response = responseData;
-        console.log(this.response);
-      } catch (error) {
-        console.log("Error registration() - ", error);
-      }
+      await fetch(`${this.host}/auth/registration`, {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.submitForm),
+      }).then((data) => {
+        console.log(data);
+      });
     },
   },
 };
