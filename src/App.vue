@@ -12,8 +12,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "App",
   data() {
@@ -36,16 +34,25 @@ export default {
   },
   methods: {
     async registration() {
-      axios
-        .post(`${this.host}/auth/registration`, this.submitForm)
-        .then((response) => {
-          console.log(this.submitForm);
-          this.response = response.data;
-          console.log(this.response);
-        })
-        .catch((e) => {
-          console.log("Error registration() - ", e);
+      try {
+        const response = await fetch(`${this.host}/auth/registration`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(this.submitForm),
         });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const responseData = await response.json();
+        this.response = responseData;
+        console.log(this.response);
+      } catch (error) {
+        console.log("Error registration() - ", error);
+      }
     },
   },
 };
