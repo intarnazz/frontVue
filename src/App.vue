@@ -1,61 +1,30 @@
 <template>
-  <form @submit.prevent="registration">
-    <p>
-      <label for="text">login: </label><input v-model="login" type="text" />
-    </p>
-    <p>
-      <label for="psw">password: </label
-      ><input v-model="password" type="password" />
-    </p>
-    <p><input type="submit" /></p>
-  </form>
-  <div v-if="userMassage" class="ok">Успешно</div>
-  <div v-if="userMassage === false" class="error">ошибка</div>
+  <nav>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/auth/registration">Registration</router-link>
+  </nav>
+  <router-view />
 </template>
 
-<script>
-export default {
-  name: "App",
-  data() {
-    return {
-      login: "",
-      password: "",
-      response: null,
-      userMassage: null,
-      push: "",
-    };
-  },
-  computed: {
-    host() {
-      return "http://localhost:7123";
-    },
-    submitForm() {
-      return {
-        login: this.login,
-        password: this.password,
-      };
-    },
-  },
-  methods: {
-    async registration() {
-      await fetch(`${this.host}/auth/registration`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(this.submitForm),
-      }).then((data) => {
-        data.json().then((response) => {
-          console.log(response.code);
-          if (response.code === 201) {
-            this.userMassage = true;
-          }
-          if (response.code === 400) {
-            this.userMassage = false;
-          }
-        });
-      });
-    },
-  },
-};
-</script>
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+</style>
