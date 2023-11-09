@@ -21,9 +21,7 @@ export default {
     return {
       login: "",
       password: "",
-      response: null,
       userMassage: null,
-      push: "",
     };
   },
   computed: {
@@ -39,7 +37,7 @@ export default {
   },
   methods: {
     async registration() {
-      await fetch(`${this.host}/auth/registration`, {
+      await fetch(`${this.host}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -47,11 +45,11 @@ export default {
         body: JSON.stringify(this.submitForm),
       }).then((data) => {
         data.json().then((response) => {
-          console.log(response.code);
-          if (response.code === 201) {
+          if (response.code === 200) {
+            localStorage.setItem("token", response.data.token);
             this.userMassage = true;
-          }
-          if (response.code === 400) {
+          } else {
+            localStorage.setItem("token", null);
             this.userMassage = false;
           }
         });

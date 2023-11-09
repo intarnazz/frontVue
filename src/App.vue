@@ -1,7 +1,9 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/auth/registration">Registration</router-link>
+    <router-link to="/auth/registration">Registration</router-link> |
+    <router-link to="/auth/login">Authentication</router-link> |
+    <router-link to="/users/profile">Profile</router-link>
   </nav>
   <router-view />
 </template>
