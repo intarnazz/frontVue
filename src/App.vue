@@ -36,7 +36,6 @@ export default {
     async registration() {
       await fetch(`${this.host}/auth/registration`, {
         method: "POST",
-        mode: "cors",
         headers: {
           "Content-Type": "application/json",
         },
