@@ -29,13 +29,21 @@ profile();
 </script>
 
 <template>
-  <h2>profile:</h2>
-  <p>id: {{ id }}</p>
-  <p>login: {{ login }}</p>
-  <p>password: {{ password }}</p>
+  <div class="user-profile">
+    <h2 class="user-profile__title">profile:</h2>
+    <p class="user-profile__info">id: {{ id }}</p>
+    <p class="user-profile__info">login: {{ login }}</p>
+    <p class="user-profile__info">password: {{ password }}</p>
+  </div>
 </template>
 
 <style lang="sass">
-.profile
-  color: #42b983
+.user-profile
+  display: flex
+  flex-direction: column
+  &__title
+    color: #42b983
+    font-size: 2em
+  &__info
+    font-size: 1.5em
 </style>

@@ -37,7 +37,7 @@ const routes = [
             next("/auth/login");
           }
         } catch (error) {
-          console.error("Ошибка при проверке профиля:", error);
+          console.log("Ошибка при проверке профиля:", error);
           next("/auth/login");
         }
       } else {

@@ -1,13 +1,56 @@
+$main = #42b983
+    
+body
+    font-family: Arial, Helvetica, sans-serif
+    font-size: 16px
 a
     text-decoration: none
+samp
+    padding: 0px !important
+    background: none !important
+    position: absolute
 a:hover
     transition: .2s
-    color: #42b983
+    color: $main
 .ok
     color: #309700
     background-color: #c6ffab
     padding: 20px
 .error
     color: #f00
-    // background-color: #ffabab
+    background-color: #ffabab
     padding: 20px
+.form
+    width: 350px
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin: auto
+    gap: 1em
+    &__row
+        width: 100%
+        display: flex
+        align-items: center
+        gap: 1em
+        justify-content: space-between
+    &__input
+        border: none
+        transition: .2s
+    &__input:focus
+        outline: none
+        box-shadow: 5px 5px 0px #000  
+    &__input:hover
+        box-shadow: 5px 5px 0px #000        
+    &__label
+        font-size: 1.2em
+        color: #42b983
+    &__submit
+        background-color: #42b983
+        font-size: 17px
+        font-weight: 600
+        width: 11em
+        height: 2em
+        border: none
+        transition: .2s
+    &__submit:hover
+        box-shadow: 5px 5px 0px #000        

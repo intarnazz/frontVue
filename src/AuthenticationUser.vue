@@ -4,6 +4,7 @@ const HOST = "http://localhost:7123";
 const login = ref("");
 const password = ref("");
 const userMassage = ref(null);
+const userMassageErr = ref(null);
 
 const registration = async () => {
   await fetch(`${HOST}/auth/login`, {
@@ -17,12 +18,17 @@ const registration = async () => {
     }),
   }).then((data) => {
     data.json().then((response) => {
+      console.log(response)
       if (response.code === 200) {
         localStorage.setItem("token", response.data.token);
-        userMassage.value = true;
-      } else {
+        userMassageErr.value = true;
+      } else if (response.code === 401) {
         localStorage.setItem("token", null);
-        userMassage.value = false;
+        userMassageErr.value = false;
+        userMassage.value = response.message
+      } else {
+        userMassageErr.value = false;
+        userMassage.value = "ошибка сервера"
       }
     });
   });
@@ -30,17 +36,26 @@ const registration = async () => {
 </script>
 
 <template>
-  <form @submit.prevent="registration">
-    <p>
-      <label for="text">login: </label
-      ><input v-model="login" name="login" type="text" />
-    </p>
-    <p>
-      <label for="psw">password: </label
-      ><input v-model="password" name="password" type="password" />
-    </p>
-    <p><input type="submit" /></p>
+  <form class="form" @submit.prevent="registration">
+    <div class="form__row">
+      <label class="form__label" for="text">Login: </label>
+      <div class="form__input-wrapper">
+        <input v-model="login" class="form__input" name="login" type="text" />
+      </div>
+    </div>
+    <div class="form__row">
+      <label class="form__label" for="psw">Password: </label>
+      <div class="form__input-wrapper">
+        <input
+          v-model="password"
+          class="form__input"
+          name="password"
+          type="password"
+        />
+      </div>
+    </div>
+    <p><input class="form__submit" type="submit" /></p>
   </form>
-  <div v-if="userMassage" class="ok">Успешно</div>
-  <div v-if="userMassage === false" class="error">ошибка</div>
+  <div v-if="userMassageErr" class="ok">Успешно</div>
+  <div v-if="userMassageErr === false" class="error">{{ userMassage }}</div>
 </template>
