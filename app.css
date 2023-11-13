@@ -1,3 +1,12 @@
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  transition: 0.2s;
+  color: #42b983;
+}
+
 .ok {
   color: #309700;
   background-color: #c6ffab;
@@ -5,7 +14,6 @@
 }
 
 .error {
-  color: #970000;
-  background-color: #ffabab;
+  color: #f00;
   padding: 20px;
 }/*# sourceMappingURL=app.css.map */

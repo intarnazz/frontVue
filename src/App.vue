@@ -1,9 +1,9 @@
 <template>
   <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/auth/registration">Registration</router-link> |
-    <router-link to="/auth/login">Authentication</router-link> |
-    <router-link to="/users/profile">Profile</router-link>
+    <RouterLink to="/">Home</RouterLink> |
+    <RouterLink class="registration" :to="{ name: 'registration' }">Registration</RouterLink> |
+    <RouterLink class="login" :to="{ name: 'login' }">Authentication</RouterLink> |
+    <RouterLink class="profile" :to="{ name: 'profile' }">Profile</RouterLink>
   </nav>
   <router-view />
 </template>
@@ -26,7 +26,7 @@ nav a {
   color: #2c3e50;
 }
 
-nav a.router-link-exact-active {
+nav a.RouterLink-exact-active {
   color: #42b983;
 }
 </style>
