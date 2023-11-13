@@ -41,10 +41,13 @@ const registration = async () => {
           console.log(response.code)
           userMassageType.value = true;
           userMassage.value = "Пользователь зарегистрирован";
-        }
-        if (response.code === 400) {
-          console.log(response.code)
-          userMassage.value = false;
+        } else if (response.code === 400) {
+          console.log(response)
+          userMassageType.value = false;
+          userMassage.value = response.message;
+        } else {
+          userMassageType.value = false;
+          userMassage.value = "server error";
         }
       });
     });
