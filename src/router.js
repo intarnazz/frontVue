@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Registration from "./RegistrationUser.vue";
 import Authentication from "./AuthenticationUser.vue";
 import Profile from "./UserProfile.vue";
+import Page404 from "./Page404.vue";
 
 const HOST = "http://localhost:7123";
 
@@ -44,6 +45,11 @@ const routes = [
         next("/auth/login");
       }
     },
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: "404",
+    component: Page404, 
   },
 ];
 
