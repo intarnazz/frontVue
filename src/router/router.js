@@ -1,16 +1,28 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Registration from "./RegistrationUser.vue";
-import Authentication from "./AuthenticationUser.vue";
-import Profile from "./UserProfile.vue";
-import Page404 from "./Page404.vue";
+import Home from "../page/HomePage.vue";
+import Registration from "../page/RegistrationPage.vue";
+import Authentication from "../page/AuthenticationPage.vue";
+import Profile from "../page/ProfilePage.vue";
+import Page404 from "../page/Page404.vue";
+import Aboba from "../components/TodoCard.vue";
 
 const HOST = "http://localhost:7123";
 
 const routes = [
   {
+    path: "/",
+    name: "Home",
+    component: Home,
+  },
+  {
     path: "/auth/registration",
     name: "registration",
     component: Registration,
+  },
+  {
+    path: "/todo/:id",
+    name: "aboba",
+    component: Aboba,
   },
   {
     path: "/auth/login",
@@ -49,7 +61,7 @@ const routes = [
   {
     path: "/:catchAll(.*)",
     name: "404",
-    component: Page404, 
+    component: Page404,
   },
 ];
 
