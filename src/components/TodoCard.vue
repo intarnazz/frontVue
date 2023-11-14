@@ -32,7 +32,6 @@ const props = defineProps(['todo'])
     background-color: #42b983
     padding: 1em
   &__title
-    flex: 1
     margin: 0
   &__content
     padding: 1em
