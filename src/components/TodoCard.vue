@@ -5,18 +5,18 @@ const props = defineProps(['todo'])
 </script>
 
 <template>
-	<RouterLink :to="{name: 'aboba', params:{id: props.todo.id}}">
-		<li class="card cards__item">
-			<div class="card__title-wrapper">
-				<h3 class="card__title">
-					{{ props.todo.title }}
-				</h3>
-			</div>
-			<div class="card__content">
-				{{ props.todo.body }}
-			</div>
-		</li>
-	</RouterLink>
+  <RouterLink :to="{ name: 'TodoCard', params: { id: props.todo.id } }">
+    <li class="card cards__item">
+      <div class="card__title-wrapper">
+        <h3 class="card__title">
+          {{ props.todo.title }}
+        </h3>
+      </div>
+      <div class="card__content">
+        {{ props.todo.body }}
+      </div>
+    </li>
+  </RouterLink>
 </template>
 
 <style lang="sass" scoped>
@@ -39,4 +39,7 @@ const props = defineProps(['todo'])
 .card:hover
   transition: .2s
   box-shadow: 5px 5px 0px #000
+a:hover 
+  transition: none
+  color: #000
 </style>

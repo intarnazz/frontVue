@@ -4,7 +4,7 @@ import Registration from "../page/RegistrationPage.vue";
 import Authentication from "../page/AuthenticationPage.vue";
 import Profile from "../page/ProfilePage.vue";
 import Page404 from "../page/Page404.vue";
-import Aboba from "../components/TodoCard.vue";
+import TodoCard from "../components/TodoCard.vue";
 
 const HOST = "http://localhost:7123";
 
@@ -21,8 +21,8 @@ const routes = [
   },
   {
     path: "/todo/:id",
-    name: "aboba",
-    component: Aboba,
+    name: "TodoCard",
+    component: TodoCard,
   },
   {
     path: "/auth/login",
