@@ -1,11 +1,15 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import TodoCard from '../TodoCard.vue'
+
+const URL = import.meta.env.VITE_API_CARD_URL
+console.log(URL)
+
 const isLoading = ref(true);
 const cardArr = ref([]);
 
 onMounted(async () => {
-  await fetch('https://jsonplaceholder.typicode.com/posts')
+  await fetch(`${URL}`)
     .then((response) => response.json())
     .then((json) => {
       for (let i = 0; i < json.length; i++) {

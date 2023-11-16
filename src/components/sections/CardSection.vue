@@ -1,13 +1,16 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
+
+const URL = import.meta.env.VITE_API_CARD_URL
+
 const isLoading = ref(true);
 const title = ref("");
 const body = ref("");
 const route = useRoute();
 
 onMounted(async () => {
-  await fetch(`https://jsonplaceholder.typicode.com/posts/${route.params.id}`)
+  await fetch(`${URL}/${route.params.id}`)
     .then((response) => response.json())
     .then((json) => {
       title.value = json.title;

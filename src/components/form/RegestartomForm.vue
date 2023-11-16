@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 
-const HOST = "http://localhost:7123";
+const HOST = import.meta.env.VITE_API_SERVER_URL;
 const login = ref("");
 const password = ref("");
 const userMassage = ref(null);
