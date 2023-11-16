@@ -1,11 +1,14 @@
 <script setup>
-
-const props = defineProps(['todo'])
-
+import { useRoute } from "vue-router";
+const props = defineProps(["todo"]);
+if (!props.todo) {
+  const route = useRoute();
+  console.log(route.params.id);
+}
 </script>
 
 <template>
-  <RouterLink :to="{ name: 'TodoCard', params: { id: props.todo.id } }">
+  <RouterLink :to="{ name: 'CardPage', params: { id: props.todo.id } }">
     <li class="card cards__item">
       <div class="card__title-wrapper">
         <h3 class="card__title">
@@ -38,7 +41,7 @@ const props = defineProps(['todo'])
 .card:hover
   transition: .2s
   box-shadow: 5px 5px 0px #000
-a:hover 
+a:hover
   transition: none
   color: #000
 </style>

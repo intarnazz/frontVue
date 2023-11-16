@@ -11,7 +11,6 @@ onMounted(async () => {
       for (let i = 0; i < json.length; i++) {
         if (json[i].userId === 1) {
           cardArr.value = [...cardArr.value, json[i]]
-          console.log(json[i])
         }
       }
     })

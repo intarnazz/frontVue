@@ -4,7 +4,7 @@ import Registration from "../page/RegistrationPage.vue";
 import Authentication from "../page/AuthenticationPage.vue";
 import Profile from "../page/ProfilePage.vue";
 import Page404 from "../page/Page404.vue";
-import TodoCard from "../components/TodoCard.vue";
+import CardPage from '../page/CardPage.vue';
 
 const HOST = "http://localhost:7123";
 
@@ -21,8 +21,9 @@ const routes = [
   },
   {
     path: "/todo/:id",
-    name: "TodoCard",
-    component: TodoCard,
+    name: "CardPage",
+    component: CardPage,
+    props: true,
   },
   {
     path: "/auth/login",
