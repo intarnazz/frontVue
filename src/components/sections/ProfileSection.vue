@@ -37,7 +37,7 @@ profile();
   </div>
 </template>
 
-<style lang="sass">
+<style lang="sass" scoped>
 .user-profile
   display: flex
   flex-direction: column

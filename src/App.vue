@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper-nav">
     <nav class="app__nav">
-      <RouterLink to="/">Home</RouterLink> |
+      <RouterLink :to="{ name: 'Home' }">Home</RouterLink> |
       <RouterLink :to="{ name: 'registration' }">Registration</RouterLink> |
       <RouterLink :to="{ name: 'login' }">Authentication</RouterLink> |
       <RouterLink :to="{ name: 'profile' }">Profile</RouterLink>
     </nav>
   </div>
-  <router-view />
+  <RouterView />
 </template>
 
 <style lang="sass">
