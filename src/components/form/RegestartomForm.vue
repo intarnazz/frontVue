@@ -35,20 +35,25 @@ const registration = async () => {
         login: login.value,
         password: password.value,
       }),
-    }).then((data) => {
-      data.json().then((response) => {
-        if (response.code === 201) {
-          userMassageType.value = true;
-          userMassage.value = "Пользователь зарегистрирован";
-        } else if (response.code === 400) {
-          userMassageType.value = false;
-          userMassage.value = response.message;
-        } else {
-          userMassageType.value = false;
-          userMassage.value = "server error";
-        }
+    })
+      .then((data) => {
+        data.json().then((response) => {
+          if (response.code === 201) {
+            userMassageType.value = true;
+            userMassage.value = "Пользователь зарегистрирован";
+          } else if (response.code === 400) {
+            userMassageType.value = false;
+            userMassage.value = response.message;
+          } else {
+            userMassageType.value = false;
+            userMassage.value = "server error";
+          }
+        });
+      })
+      .catch(() => {
+        userMassageType.value = false;
+        userMassage.value = "Сервер не отвечает";
       });
-    });
   }
 };
 </script>

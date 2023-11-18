@@ -16,21 +16,26 @@ const registration = async () => {
       login: login.value,
       password: password.value,
     }),
-  }).then((data) => {
-    data.json().then((response) => {
-      if (response.code === 200) {
-        localStorage.setItem("token", response.data.token);
-        userMassageErr.value = true;
-      } else if (response.code === 401) {
-        localStorage.setItem("token", null);
-        userMassageErr.value = false;
-        userMassage.value = response.message;
-      } else {
-        userMassageErr.value = false;
-        userMassage.value = "ошибка сервера";
-      }
+  })
+    .then((data) => {
+      data.json().then((response) => {
+        if (response.code === 200) {
+          localStorage.setItem("token", response.data.token);
+          userMassageErr.value = true;
+        } else if (response.code === 401) {
+          localStorage.setItem("token", null);
+          userMassageErr.value = false;
+          userMassage.value = response.message;
+        } else {
+          userMassageErr.value = false;
+          userMassage.value = "ошибка сервера";
+        }
+      });
+    })
+    .catch(() => {
+      userMassageErr.value = false;
+      userMassage.value = "Сервер не отвечает";
     });
-  });
 };
 </script>
 
