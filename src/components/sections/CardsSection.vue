@@ -1,10 +1,8 @@
 <script setup>
 import { onMounted, ref } from "vue";
-import TodoCard from '../TodoCard.vue'
+import TodoCard from "../TodoCard.vue";
 
-const URL = import.meta.env.VITE_API_CARD_URL
-console.log(URL)
-
+const URL = import.meta.env.VITE_API_CARD_URL;
 const isLoading = ref(true);
 const cardArr = ref([]);
 
@@ -12,16 +10,12 @@ onMounted(async () => {
   await fetch(`${URL}`)
     .then((response) => response.json())
     .then((json) => {
-      for (let i = 0; i < json.length; i++) {
-        if (json[i].userId === 1) {
-          cardArr.value = [...cardArr.value, json[i]]
-        }
-      }
+      cardArr.value = json.filter((i) => i.userId === 1);
     })
     .finally(() => {
-      isLoading.value = false
+      isLoading.value = false;
     });
-})
+});
 </script>
 
 <template>

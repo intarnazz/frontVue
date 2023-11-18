@@ -3,7 +3,6 @@ import { useRoute } from "vue-router";
 const props = defineProps(["todo"]);
 if (!props.todo) {
   const route = useRoute();
-  console.log(route.params.id);
 }
 </script>
 
